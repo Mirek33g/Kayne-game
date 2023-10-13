@@ -2,17 +2,19 @@ from tkinter import *
 import requests
 
 
+# function gets info from website using api 
 def get_quote():
   response = requests.get(url= "https://api.kanye.rest")
   response.raise_for_status()
   canvas.itemconfig(quote_text, text= response.json()["quote"])
 
 
-
+# created canvas window 
 window = Tk()
 window.title("Kanye Says...")
 window.config(padx=50, pady=50)
 
+# created window parameters
 canvas = Canvas(width=300, height=414)
 background_img = PhotoImage(file="background.png")
 canvas.create_image(150, 207, image=background_img)
